@@ -1,0 +1,37 @@
+#!/bin/bash
+
+cd c3disk
+
+make || exit
+
+module="c3disk"
+device="c3disk"
+mode="777"
+
+# unmount /mnt
+umount /mnt/c3disk
+rm -rf /mnt/c3disk
+mkdir  /mnt/c3disk
+
+# stop the running module if exists
+rmmod $module &> /dev/null
+
+# remove stale nodes
+rm -f /dev/c3disk*
+
+insmod ./$module.ko || exit 1
+
+# make device nodes
+major=$(awk "\$2==\"$module\" {print \$1}" /proc/devices)
+mknod /dev/${device} b $major 0
+group="staff"
+grep -q '^staff:' /etc/group || group="wheel"
+chgrp $group /dev/${device}*
+chmod $mode  /dev/${device}*
+
+# create file-system
+mkfs.ext4 /dev/c3disk
+mount /dev/c3disk /mnt/c3disk
+chmod 777 /mnt/c3disk
+
+tail -f /var/log/kern.log

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# make sure binary is up-to-date
+bash -c 'cd c3 && make' || exit
+
+# check validity of arguments
+if [ $# -eq 0 ]; then
+  echo 'Usage: c3 benchmark_name'
+  exit 1
+fi
+
+# run c3 program
+./build/c3 $@ > /dev/null
+
