@@ -1,49 +1,88 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>C3: Crash Consistency Checker by jiangyy</title>
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-dark.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script src="javascripts/respond.js"></script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <!--[if lt IE 8]>
-    <link rel="stylesheet" href="stylesheets/ie.css">
-    <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="C3: Crash Consistency Checker : Crash Consistency Validation Made Easy">
 
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>C3: Crash Consistency Checker</title>
   </head>
+
   <body>
-      <div id="header">
-        <nav>
-          <li class="fork"><a href="https://github.com/jiangyy/c3">View On GitHub</a></li>
-          <li class="downloads"><a href="https://github.com/jiangyy/c3/zipball/master">ZIP</a></li>
-          <li class="downloads"><a href="https://github.com/jiangyy/c3/tarball/master">TAR</a></li>
-          <li class="title">DOWNLOADS</li>
-        </nav>
-      </div><!-- end header -->
 
-    <div class="wrapper">
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/jiangyy/c3">View on GitHub</a>
 
-      <section>
-        <div id="title">
-          <h1>C3: Crash Consistency Checker</h1>
-          <p>Crash Consistency Validation Made Easy</p>
-          <hr>
-          <span class="credits left">Project maintained by <a href="https://github.com/jiangyy">jiangyy</a></span>
-          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
-        </div>
+          <h1 id="project_title">C3: Crash Consistency Checker</h1>
+          <h2 id="project_tagline">Crash Consistency Validation Made Easy</h2>
 
-        <h3>
-<a id="crash-consistency-validation" class="anchor" href="#crash-consistency-validation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Crash Consistency Validation</h3>
-      </section>
-
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/jiangyy/c3/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/jiangyy/c3/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
     </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="c3-crash-consistency-checker" class="anchor" href="#c3-crash-consistency-checker" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>C3: Crash Consistency Checker</h1>
+
+<h2>
+<a id="are-your-program-crash-safe" class="anchor" href="#are-your-program-crash-safe" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Are your program crash-safe?</h2>
+
+<p>C3 automatically checks a software for potential data loss.</p>
+
+<h2>
+<a id="using-c3" class="anchor" href="#using-c3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using C3</h2>
+
+<p>To use C3, you just need to provide a manuscript - how to do the initial setup and how to run the program. The rest is as easy as clicking a button. There are samples in the <code>subjects</code> directory.</p>
+
+<ol>
+<li>
+<p>(Do this only once is sufficent) If you have not started c3disk driver yet, you may start it by, which should be run as root:</p>
+
+<pre><code>&gt; ./init
+</code></pre>
+</li>
+<li>
+<p>Place your inital file-system snapshot and test recepie (manuscript.py) in a sub-directory (e.g., gzip). Then validate by (also requires root)</p>
+
+<pre><code>&gt; ./validate gzip
+</code></pre>
+
+<p>It will generate a report for you.</p>
+</li>
+</ol>
+
+<p>The program contains kernel-parts, we suggest users try it in a virtual machine to avoid potential bugs.</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependencies:</h2>
+
+<ol>
+<li>Kernel: The c3disk driver requires a recent kernel (tested on 4.2). If you are using 3.x, there will be slight modification to the code. </li>
+<li>C libraries: libssl-dev (available in repository)</li>
+<li>Python libraries: pyautogui (depends on xlib, pil and tk)</li>
+</ol>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">C3: Crash Consistency Checker maintained by <a href="https://github.com/jiangyy">jiangyy</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
     
+
   </body>
 </html>
